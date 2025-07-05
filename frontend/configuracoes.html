@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações - Biblioteca</title>
+    <link rel="stylesheet" href="css/configuracoes.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-book-open"></i>
+                <span>Biblioteca</span>
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="autor.html"><i class="fas fa-user-edit"></i> Autores</a></li>
+                    <li><a href="livros.html"><i class="fas fa-book"></i> Livros</a></li>
+                    <li><a href="usuario.html"><i class="fas fa-users"></i> Usuários</a></li>
+                    <li><a href="emprestimo.html"><i class="fas fa-exchange-alt"></i> Empréstimos</a></li>
+                    <li><a href="configuracoes.html" class="active"><i class="fas fa-cog"></i> Configurações</a></li>
+                    <li><a href="login.html"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="settings-section">
+                <h1 class="page-title"><i class="fas fa-cog"></i> Configurações</h1>
+                
+                <div class="settings-tabs">
+                    <button class="tab-button active" data-tab="conta">Conta</button>
+                    <!--<button class="tab-button" data-tab="privacidade">Privacidade</button>
+                    <button class="tab-button" data-tab="notificacoes">Notificações</button> -->
+                </div>
+                
+                <div class="tab-content active" id="conta">
+                    <form class="settings-form">
+                        
+
+                        <div class="form-group">
+                            <label>Foto de Perfil:</label>
+                            <div class="profile-picture-container">
+                                <img id="profilePicture" src="img/default-profile.jpg" alt="Foto de Perfil">
+                                <input type="file" id="profilePhoto" accept="image/*" style="display: none;">
+                                <button type="button" class="button secondary" id="changePhoto">
+                                    <i class="fas fa-camera"></i> Alterar Foto
+                                </button>
+                            </div>
+                        </div>
+
+
+                        <h2><i class="fas fa-user-circle"></i> Informações da Conta</h2>
+                        
+                        <div class="form-group">
+                            <label for="currentEmail">E-mail atual:</label>
+                            <input type="email" id="currentEmail" value="usuario@exemplo.com" disabled>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="newEmail">Novo e-mail:</label>
+                            <input type="email" id="newEmail" placeholder="Digite seu novo e-mail">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="confirmEmail">Confirmar e-mail:</label>
+                            <input type="email" id="confirmEmail" placeholder="Confirme seu novo e-mail">
+                        </div>
+                        
+                        <button type="button" class="button" id="updateEmail">
+                            <i class="fas fa-save"></i> Atualizar E-mail
+                        </button>
+                    </form>
+                    
+                    <form class="settings-form">
+                        <h2><i class="fas fa-lock"></i> Alterar Senha</h2>
+                        
+                        <div class="form-group">
+                            <label for="currentPassword">Senha atual:</label>
+                            <input type="password" id="currentPassword" placeholder="Digite sua senha atual">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="newPassword">Nova senha:</label>
+                            <input type="password" id="newPassword" placeholder="Digite sua nova senha">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="confirmPassword">Confirmar senha:</label>
+                            <input type="password" id="confirmPassword" placeholder="Confirme sua nova senha">
+                        </div>
+                        
+                        <button type="button" class="button" id="updatePassword">
+                            <i class="fas fa-key"></i> Alterar Senha
+                        </button>
+                    </form>
+                </div>
+                <!--
+                <div class="tab-content" id="privacidade">
+                    <form class="settings-form">
+                        <h2><i class="fas fa-shield-alt"></i> Configurações de Privacidade</h2>
+                        
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="profileVisibility" checked>
+                            <label for="profileVisibility">Tornar meu perfil visível para outros usuários</label>
+                        </div>
+                        
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="activitySharing" checked>
+                            <label for="activitySharing">Compartilhar minha atividade de leitura</label>
+                        </div>
+                        
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="dataCollection">
+                            <label for="dataCollection">Permitir coleta de dados para melhorias</label>
+                        </div>
+                        
+                        <button type="button" class="button">
+                            <i class="fas fa-save"></i> Salvar Preferências
+                        </button>
+                    </form>
+                </div>
+        
+                <div class="tab-content" id="notificacoes">
+                    <form class="settings-form">
+                        <h2><i class="fas fa-bell"></i> Preferências de Notificação</h2>
+                        
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="emailNotifications" checked>
+                            <label for="emailNotifications">Receber notificações por e-mail</label>
+                        </div>
+                        
+                        <div class="form-group checkbox-group">
+                            <input type="checkbox" id="systemNotifications" checked>
+                            <label for="systemNotifications">Notificações do sistema</label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Frequência de notificações:</label>
+                            <select id="notificationFrequency">
+                                <option value="immediate">Imediatamente</option>
+                                <option value="daily" selected>Resumo diário</option>
+                                <option value="weekly">Resumo semanal</option>
+                            </select>
+                        </div>
+                        
+                        <button type="button" class="button">
+                            <i class="fas fa-save"></i> Salvar Preferências
+                        </button>
+                    </form>
+                </div>-->
+
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Biblioteca - Desenvolvido por Luiz Henrique</p>
+        </div>
+    </footer>
+
+    <script src="js/configuracoes.js"></script>
+    <script src="js/tema.js"></script>
+
+    <script>
+        // Toggle do tema escuro/claro
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        
+        // Verificar preferência do usuário
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const savedTheme = localStorage.getItem('theme');
+        
+        // Aplicar tema salvo ou preferência do sistema
+        if (savedTheme) {
+            html.setAttribute('data-theme', savedTheme);
+        } else if (prefersDark) {
+            html.setAttribute('data-theme', 'dark');
+        }
+        
+        // Atualizar ícone do botão
+        function updateThemeIcon() {
+            const isDark = html.getAttribute('data-theme') === 'dark';
+            themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        }
+        
+        updateThemeIcon();
+        
+        // Alternar tema ao clicar no botão
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon();
+        });
+    </script>
+
+</body>
+</html>

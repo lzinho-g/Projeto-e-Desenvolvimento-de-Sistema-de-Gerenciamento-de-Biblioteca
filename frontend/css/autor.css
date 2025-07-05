@@ -1,0 +1,32 @@
+.author-detail {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.author-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: var(--shadow);
+}
+
+.author-info {
+    flex: 1;
+}
+
+.author-books {
+    margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+    .author-detail {
+        flex-direction: column;
+    }
+    
+    .author-photo {
+        width: 100%;
+        height: auto;
+    }
+}

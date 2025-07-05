@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Empréstimos - Biblioteca</title>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/emprestimo.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<body>
+
+  <!-- Cabeçalho -->
+  <header>
+    <div class="container header-content">
+      <div class="logo">
+        <i class="fas fa-book-open" aria-hidden="true"></i>
+        <span>Biblioteca</span>
+      </div>
+      <nav class="navbar">
+        <ul>
+          <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="autor.html"><i class="fas fa-user-edit"></i> Autores</a></li>
+          <li><a href="livros.html"><i class="fas fa-book"></i> Livros</a></li>
+          <li><a href="usuario.html"><i class="fas fa-users"></i> Usuários</a></li>
+          <li><a href="emprestimo.html" class="active"><i class="fas fa-exchange-alt"></i> Empréstimos</a></li>
+          <li><a href="configuracoes.html"><i class="fas fa-cog"></i> Configurações</a></li>
+          <li><a href="login.html"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+        </ul>
+      </nav>
+      <button class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+        <i class="fas fa-moon" aria-hidden="true"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Conteúdo principal -->
+  <main>
+    <div class="container">
+
+      <!-- Seção de cadastro -->
+      <section class="loan-form">
+        <div class="form-container">
+          <h2 class="section-title">Registrar Empréstimo</h2>
+          <form id="loanForm" autocomplete="off">
+            <div class="form-group">
+              <label for="livroSelect">Livro:</label>
+              <select id="livroSelect" required>
+                <option value="">Selecione um livro...</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="usuarioSelect">Usuário:</label>
+              <select id="usuarioSelect" required>
+                <option value="">Selecione um usuário...</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="loanDate">Data do Empréstimo:</label>
+              <input type="date" id="loanDate" required />
+            </div>
+
+            <div class="form-group">
+              <label for="returnDate">Data de Devolução:</label>
+              <input type="date" id="returnDate" required />
+            </div>
+
+            <div class="form-group">
+              <label for="notes">Observação:</label>
+              <textarea id="notes" rows="3" placeholder="Opcional..."></textarea>
+            </div>
+
+            <div class="form-actions">
+              <button type="reset" class="button secondary" aria-label="Limpar formulário">
+                <i class="fas fa-eraser"></i> Limpar
+              </button>
+              <button type="submit" class="button" aria-label="Registrar Empréstimo">
+                <i class="fas fa-save"></i> Registrar Empréstimo
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- Seção de listagem -->
+      <section class="loan-list">
+        <div class="form-container">
+          <h2 class="section-title">Empréstimos Ativos</h2>
+
+          <div class="filter">
+            <input type="text" id="loanSearch" placeholder="Buscar por livro ou usuário..." />
+          </div>
+
+          <div class="table-container">
+            <table id="loansTable">
+              <thead>
+                <tr>
+                  <th>Livro</th>
+                  <th>Usuário</th>
+                  <th>Data do Empréstimo</th>
+                  <th>Data da Devolução</th>
+                  <th>Status</th>
+                  <th style="min-width: 130px;">Ações</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- preenchido dinamicamente via JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Rodapé -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Biblioteca - Desenvolvido por Luiz Henrique</p>
+    </div>
+  </footer>
+
+  <!-- Script -->
+  <script type="module" src="js/emprestimo.js"></script>
+
+  <script>
+        // Toggle do tema escuro/claro
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        
+        // Verificar preferência do usuário
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const savedTheme = localStorage.getItem('theme');
+        
+        // Aplicar tema salvo ou preferência do sistema
+        if (savedTheme) {
+            html.setAttribute('data-theme', savedTheme);
+        } else if (prefersDark) {
+            html.setAttribute('data-theme', 'dark');
+        }
+        
+        // Atualizar ícone do botão
+        function updateThemeIcon() {
+            const isDark = html.getAttribute('data-theme') === 'dark';
+            themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        }
+        
+        updateThemeIcon();
+        
+        // Alternar tema ao clicar no botão
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon();
+        });
+    </script>
+
+</body>
+</html>

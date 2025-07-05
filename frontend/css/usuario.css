@@ -1,0 +1,349 @@
+/* Formulário de usuário */
+.user-form {
+    margin-bottom: 2rem;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+/* Upload de foto */
+.file-upload {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.upload-button {
+    padding: 0.75rem 1.5rem;
+    background-color: var(--primary-light);
+    color: var(--primary-dark);
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.upload-button:hover {
+    background-color: rgba(93, 156, 89, 0.2);
+}
+
+.file-name {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+/* Tabela de usuários */
+#usersTable {
+    table-layout: auto;
+    width: 100%;
+}
+
+#usersTable td {
+    vertical-align: middle;
+    white-space: normal;
+    word-break: break-word;
+    max-width: none;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.user-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.user-info small {
+    color: var(--text-light);
+    font-size: 0.8rem;
+}
+
+.user-type,
+.status {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    text-align: center;
+    max-width: fit-content;
+    white-space: nowrap;
+    word-break: normal;
+}
+
+.user-type.comum {
+    background-color: rgba(149, 165, 166, 0.2);
+    color: #95a5a6;
+}
+
+.user-type.professor {
+    background-color: rgba(41, 128, 185, 0.2);
+    color: #2980b9;
+}
+
+.user-type.funcionario {
+    background-color: rgba(39, 174, 96, 0.2);
+    color: #27ae60;
+}
+
+.user-type.admin {
+    background-color: rgba(142, 68, 173, 0.2);
+    color: #8e44ad;
+}
+
+.status.Ativo,
+.status.ativo {
+    background-color: #e6f4ea;
+    color: #2e7d32;
+    border: 1px solid #a5d6a7;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status.Inativo,
+.status.inativo {
+    background-color: #f4f4f4;
+    color: #999;
+    border: 1px solid #ccc;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status.Suspenso,
+.status.suspenso {
+    background-color: #fdecea;
+    color: #c62828;
+    border: 1px solid #ef9a9a;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.icon-button {
+    background: none;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+    font-size: 1rem;
+    margin-right: 0.5rem;
+    padding: 0.25rem;
+    border-radius: 4px;
+}
+
+.icon-button:hover {
+    color: var(--primary-color);
+    background-color: rgba(93, 156, 89, 0.1);
+}
+
+.icon-button.danger:hover {
+    color: #e74c3c;
+    background-color: rgba(231, 76, 60, 0.1);
+}
+
+/* Modal de histórico */
+.user-header {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.user-header .user-avatar {
+    width: 60px;
+    height: 60px;
+}
+
+.user-details h4 {
+    margin-bottom: 0.5rem;
+    color: var(--primary-dark);
+}
+
+.user-details p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+}
+
+.history-timeline {
+    position: relative;
+    padding-left: 30px;
+}
+
+.history-timeline::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--border-color);
+}
+
+.history-item {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.history-date {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: var(--primary-dark);
+}
+
+.history-content {
+    display: flex;
+    gap: 1rem;
+}
+
+.history-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--primary-light);
+    color: var(--primary-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    left: -20px;
+}
+
+.history-details h5 {
+    margin-bottom: 0.25rem;
+    color: var(--text-color);
+}
+
+.history-details p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .form-row {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .form-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .form-actions .button {
+        width: 100%;
+    }
+
+    .filter {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .filter input {
+        width: 100%;
+    }
+
+    #usersTable {
+        display: block;
+        overflow-x: auto;
+        font-size: 0.9rem;
+    }
+
+    #usersTable thead {
+        display: none;
+    }
+
+    #usersTable tbody tr {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 1rem;
+        background-color: #f9f9f9;
+    }
+
+    #usersTable tbody td {
+        display: block;
+        text-align: left;
+        white-space: normal;
+        position: relative;
+        padding-left: 50%;
+    }
+
+    #usersTable tbody td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 1rem;
+        top: 0.75rem;
+        font-weight: bold;
+        text-align: left;
+    }
+
+    #usersTable td:last-child {
+        border-bottom: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .user-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .user-header .user-avatar {
+        margin-bottom: 1rem;
+    }
+
+    #usersTable th:nth-child(4),
+    #usersTable td:nth-child(4) {
+        display: none;
+    }
+}
+
+
+#usersTable td:nth-child(5) {
+    white-space: nowrap;
+}
+
+
+#usersTable td {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#usersTable td:nth-child(4) { /* Email */
+    white-space: nowrap;
+    overflow-x: auto;
+    text-overflow: initial;
+    max-width: none;
+}
+
+#usersTable td:nth-child(5) { /* Telefone */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 180px;
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Biblioteca</title>
+    <link rel="stylesheet" href="css/cadastro.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="cadastro-container">
+        <div class="cadastro-header">
+            <div class="logo">
+                <i class="fas fa-book-open"></i>
+                <span>Biblioteca</span>
+            </div>
+            <h1>Crie sua conta</h1>
+            <p>Preencha os campos abaixo para se cadastrar</p>
+        </div>
+
+        <form id="cadastroForm" class="cadastro-form">
+            <div class="form-group">
+                <label for="nome">Nome completo:</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="email" name="email" required placeholder="Digite seu e-mail">
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="senha">Senha:</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="senha" name="senha" required placeholder="Crie uma senha">
+                    <button type="button" class="toggle-password" id="toggleSenha">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                <small class="password-hint">A senha deve ter pelo menos 8 caracteres</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="confirmarSenha">Confirmar senha:</label>
+                <div class="input-with-icon">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="confirmarSenha" name="confirmarSenha" required placeholder="Confirme sua senha">
+                    <button type="button" class="toggle-password" id="toggleConfirmarSenha">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="termos" name="termos" required>
+                <label for="termos">Eu concordo com os <a href="#" class="link">Termos de Serviço</a> e <a href="#" class="link">Política de Privacidade</a></label>
+            </div>
+            
+            <button type="submit" class="cadastro-button">
+                <i class="fas fa-user-plus"></i> Criar conta
+            </button>
+            
+            <div class="login-link">
+                Já tem uma conta? <a href="login.html" class="link">Faça login</a>
+            </div>
+        </form>
+
+        <div class="cadastro-footer">
+            <p>© 2025 Biblioteca - Desenvolvido por Luiz Henrique</p>
+        </div>
+    </div>
+
+    <script>
+        // Toggle para mostrar/esconder senha
+        const toggleSenha = document.getElementById('toggleSenha');
+        const senhaInput = document.getElementById('senha');
+        const toggleConfirmarSenha = document.getElementById('toggleConfirmarSenha');
+        const confirmarSenhaInput = document.getElementById('confirmarSenha');
+        
+        toggleSenha.addEventListener('click', function() {
+            const type = senhaInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            senhaInput.setAttribute('type', type);
+            this.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+        });
+        
+        toggleConfirmarSenha.addEventListener('click', function() {
+            const type = confirmarSenhaInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            confirmarSenhaInput.setAttribute('type', type);
+            this.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+        });
+
+        // Validação do formulário
+        document.getElementById('cadastroForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const senha = senhaInput.value;
+            const confirmarSenha = confirmarSenhaInput.value;
+            
+            if (senha !== confirmarSenha) {
+                alert('As senhas não coincidem!');
+                return;
+            }
+            
+            if (senha.length < 8) {
+                alert('A senha deve ter pelo menos 8 caracteres!');
+                return;
+            }
+            
+            // Chamada à API de cadastro
+            // Simulação básica para demonstração
+            alert('Cadastro realizado com sucesso! Redirecionando para login...');
+            window.location.href = 'login.html';
+        });
+    </script>
+</body>
+</html>

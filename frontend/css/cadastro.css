@@ -1,0 +1,230 @@
+/* Estilos específicos para a página de cadastro */
+
+:root {
+    --primary-color: #5D9C59;
+    --primary-dark: #4A7C59;
+    --background: #F5F5F5;
+    --text-color: #333333;
+    --text-light: #6D6D6D;
+    --border-color: #E0E0E0;
+    --input-bg: #FFFFFF;
+    --input-border: #CCCCCC;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --error-color: #D35D6E;
+    --link-color: #5D9C59;
+}
+
+/* Tema escuro */
+[data-theme="dark"] {
+    --primary-color: #7FB77E;
+    --background: #1E1E1E;
+    --text-color: #E0E0E0;
+    --text-light: #A0A0A0;
+    --border-color: #444444;
+    --input-bg: #2D2D2D;
+    --input-border: #555555;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    --link-color: #7FB77E;
+}
+
+/* Reset e estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+/* Container do cadastro */
+.cadastro-container {
+    width: 100%;
+    max-width: 480px;
+    background-color: var(--input-bg);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    padding: 2rem;
+}
+
+/* Cabeçalho do cadastro */
+.cadastro-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.cadastro-header .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.cadastro-header h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.cadastro-header p {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* Formulário de cadastro */
+.cadastro-form {
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.input-with-icon {
+    position: relative;
+}
+
+.input-with-icon i {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-light);
+}
+
+.input-with-icon input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: var(--input-bg);
+    color: var(--text-color);
+    transition: border-color 0.3s;
+}
+
+.input-with-icon input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(93, 156, 89, 0.2);
+}
+
+.toggle-password {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+    padding: 0.25rem;
+}
+
+.password-hint {
+    display: block;
+    margin-top: 0.25rem;
+    color: var(--text-light);
+    font-size: 0.8rem;
+}
+
+/* Checkbox de termos */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: auto;
+    accent-color: var(--primary-color);
+}
+
+.checkbox-group label {
+    margin-bottom: 0;
+    font-weight: normal;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+/* Links */
+.link {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+/* Botão de cadastro */
+.cadastro-button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: background-color 0.3s;
+    margin-bottom: 1rem;
+}
+
+.cadastro-button:hover {
+    background-color: var(--primary-dark);
+}
+
+/* Link para login */
+.login-link {
+    text-align: center;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+/* Rodapé do cadastro */
+.cadastro-footer {
+    text-align: center;
+    color: var(--text-light);
+    font-size: 0.8rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    .cadastro-container {
+        padding: 1.5rem;
+    }
+    
+    .cadastro-header h1 {
+        font-size: 1.25rem;
+    }
+}

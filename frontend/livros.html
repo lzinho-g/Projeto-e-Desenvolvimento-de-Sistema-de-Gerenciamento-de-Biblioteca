@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livros - Biblioteca</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-book-open"></i>
+                <span>Biblioteca</span>
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="autor.html"><i class="fas fa-user-edit"></i> Autores</a></li>
+                    <li><a href="livros.html" class="active"><i class="fas fa-book"></i> Livros</a></li>
+                    <li><a href="usuario.html"><i class="fas fa-users"></i> Usuários</a></li>
+                    <li><a href="emprestimo.html"><i class="fas fa-exchange-alt"></i> Empréstimos</a></li>
+                    <li><a href="configuracoes.html"><i class="fas fa-cog"></i> Configurações</a></li>
+                    <li><a href="login.html"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="book-form">
+                <div class="form-container">
+                    <h2 class="section-title">Cadastrar Livro</h2>
+                    <form id="bookForm">
+                        <div class="form-group">
+                            <label for="isbn">ISBN:</label>
+                            <input type="text" id="isbn" name="isbn" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="title">Título:</label>
+                            <input type="text" id="title" name="title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="publicationYear">Ano de Publicação:</label>
+                            <input type="number" id="publicationYear" name="publicationYear" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="publisher">Editora:</label>
+                            <input type="text" id="publisher" name="publisher" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="genre">Gênero:</label>
+                            <input type="text" id="genre" name="genre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="authors">Autores:</label>
+                            <select id="bookAuthors" name="authors" multiple required>
+                                <!-- Os autores serão carregados via JavaScript -->
+                            </select>
+                            <small>Mantenha pressionado Ctrl (Windows) ou Command (Mac) para selecionar múltiplos autores</small>
+                        </div>
+                        <button type="submit" class="button"><i class="fas fa-save"></i> Salvar Livro</button>
+                    </form>
+                </div>
+            </section>
+
+            <section class="book-list" style="margin-top: 2rem;">
+                <div class="form-container">
+                    <h2 class="section-title">Lista de Livros</h2>
+                    <div class="filter">
+                        <input type="text" id="bookSearch" placeholder="Buscar por título, autor ou gênero...">
+                        <button class="button secondary" id="clearSearch"><i class="fas fa-times"></i> Limpar</button>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table id="booksTable">
+                            <thead>
+                                <tr>
+                                    <th>ISBN</th>
+                                    <th>Título</th>
+                                    <th>Ano</th>
+                                    <th>Editora</th>
+                                    <th>Gênero</th>
+                                    <th>Autores</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Os livros serão inseridos aqui via JavaScript -->
+                            </tbody>
+                        
+                        </table>
+                        
+                    </div> 
+
+                </div>
+
+            </section>
+            
+
+            <div id="messageContainer" class="message" style="display: none;">
+                <i class="fas fa-check-circle"></i>
+                <span id="messageText"></span>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Biblioteca - Desenvolvido por Luiz Henrique</p>
+        </div>
+    </footer>
+    <script type="module" src="js/livros.js"></script>
+
+    <script>
+        // Toggle do tema escuro/claro
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        
+        // Verificar preferência do usuário
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const savedTheme = localStorage.getItem('theme');
+        
+        // Aplicar tema salvo ou preferência do sistema
+        if (savedTheme) {
+            html.setAttribute('data-theme', savedTheme);
+        } else if (prefersDark) {
+            html.setAttribute('data-theme', 'dark');
+        }
+        
+        // Atualizar ícone do botão
+        function updateThemeIcon() {
+            const isDark = html.getAttribute('data-theme') === 'dark';
+            themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        }
+        
+        updateThemeIcon();
+        
+        // Alternar tema ao clicar no botão
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autores - Biblioteca</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/autor.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="js/autor.js"></script>
+
+
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-book-open"></i>
+                <span>Biblioteca</span>
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="autor.html" class="active"><i class="fas fa-user-edit"></i> Autores</a></li>
+                    <li><a href="livros.html"><i class="fas fa-book"></i> Livros</a></li>
+                    <li><a href="usuario.html"><i class="fas fa-users"></i> Usuários</a></li>
+                    <li><a href="emprestimo.html"><i class="fas fa-exchange-alt"></i> Empréstimos</a></li>
+                    <li><a href="configuracoes.html"><i class="fas fa-cog"></i> Configurações</a></li>
+                    <li><a href="login.html"><i class="fas fa-sign-out-alt"></i> Sair</a></li>
+                </ul>
+            </nav>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="author-form">
+                <div class="form-container">
+                    <h2 class="section-title">Cadastrar Autor</h2>
+                    <form id="authorForm">
+                        <div class="form-group">
+                            <label for="name">Nome:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="nationality">Nacionalidade:</label>
+                            <input type="text" id="nationality" name="nationality" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="birthDate">Data de Nascimento:</label>
+                            <input type="date" id="birthDate" name="birthDate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="biography">Biografia:</label>
+                            <textarea id="biography" name="biography" rows="4"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="authorPhoto">Foto do Autor:</label>
+                            <input type="file" id="authorPhoto" name="authorPhoto" accept="image/*">
+                        </div>
+
+                        <button type="submit" class="button"><i class="fas fa-save"></i> Salvar Autor</button>
+                    </form>
+                </div>
+            </section>
+
+            <section class="author-list" style="margin-top: 2rem;">
+                <div class="form-container">
+                    <h2 class="section-title">Lista de Autores</h2>
+                    <div class="filter">
+                        <input type="text" id="authorSearch" placeholder="Buscar autor...">
+                        <button class="button secondary" id="clearSearch"><i class="fas fa-times"></i> Limpar</button>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table id="authorsTable">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Nacionalidade</th>
+                                    <th>Data Nasc.</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Preenchido dinamicamente por JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Biblioteca - Densenvolvido por Luiz Henrique</p>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle do tema escuro/claro
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        
+        // Verificar preferência do usuário
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const savedTheme = localStorage.getItem('theme');
+        
+        // Aplicar tema salvo ou preferência do sistema
+        if (savedTheme) {
+            html.setAttribute('data-theme', savedTheme);
+        } else if (prefersDark) {
+            html.setAttribute('data-theme', 'dark');
+        }
+        
+        // Atualizar ícone do botão
+        function updateThemeIcon() {
+            const isDark = html.getAttribute('data-theme') === 'dark';
+            themeToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        }
+        
+        updateThemeIcon();
+        
+        // Alternar tema ao clicar no botão
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon();
+        });
+    </script>
+</body>
+</html>
